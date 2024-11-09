@@ -70,10 +70,7 @@ const Login = (props) => {
     );
   };
 
-  const validateEmailHandler = () => {
-    dispathchEmail({type:'INPUT_BLUR'});
-    // setEmailIsValid(enteredEmail.includes('@'));
-  };
+
 
   const validatePasswordHandler = () => {
     setPasswordIsValid(enteredPassword.trim().length > 6);
@@ -81,7 +78,7 @@ const Login = (props) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    props.onLogin(emailState.value, emailState.value );
+    props.onLogin(emailState.value, enteredPassword );
   };
 
   return (
@@ -98,7 +95,7 @@ const Login = (props) => {
             id="email"
             value={emailState.value}
             onChange={emailChangeHandler}
-            onBlur={validateEmailHandler}
+
           />
         </div>
         <div
