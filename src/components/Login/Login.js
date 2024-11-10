@@ -88,7 +88,7 @@ const Login = (props) => {
       event.target.value.includes('@') && passwordState.value.trim().length > 6
     );
   }
-
+ 
   const passwordChangeHandler = (event) => {
     dispathchPassword({type:'USER_INPUT',val:event.target.value});
     
