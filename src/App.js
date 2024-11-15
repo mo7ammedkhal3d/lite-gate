@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState,Fragment, useEffect } from 'react';
 
 import Login from './components/Login/Login';
 import Home from './components/Home/Home';
@@ -24,17 +24,18 @@ function App() {
 
   const logoutHandler = () => {
     localStorage.removeItem('isloggedIn');
+        
     setIsLoggedIn(false);
   };
 
   return (
-    <React.Fragment>
+    <Fragment>
       <MainHeader isAuthenticated={isLoggedIn} onLogout={logoutHandler} />
       <main>
         {!isLoggedIn && <Login onLogin={loginHandler} />}
         {isLoggedIn && <Home onLogout={logoutHandler} />}
       </main>
-    </React.Fragment>
+    </Fragment>
   );
 }
 
