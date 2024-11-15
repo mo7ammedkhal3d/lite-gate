@@ -25,14 +25,18 @@ const Login = (props) => {
     };
     
   },[]);
-
+  
+  //Here the return with anynymios function is 
+  //execited if there changed id dependincies before the settimeout nad clear the previos
+  // one then setTimeout execute
+  
   useEffect(() => {
     const identifier = setTimeout(() => {
       console.log('Checking form validity!');
       setFormIsValid(
         enteredEmail.includes('@') && enteredPassword.trim().length > 6
       );
-    }, 5000);
+    }, 500);
 
     return () => {
       console.log('CLEANUP');
