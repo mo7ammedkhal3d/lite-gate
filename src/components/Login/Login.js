@@ -61,20 +61,23 @@ const Login = (props) => {
   },[]);
   
   //Here the return with anynymios function is 
-  //execited if there changed id dependincies before the settimeout nad clear the previos
-  // one then setTimeout execute
+  //executed if there changed in dependincies before the settimeout and clear the previos
+  //then setTimeout execute
+
+  const {isValid:emailIsValid} = emailState;
+  const {isValid:passwordIsValid} = passwordState;
   
   useEffect(() => {
     const identifier = setTimeout(() => {
       console.log('Checking form validity!');
       setFormIsValid(
-        enteredEmail.includes('@') && enteredPassword.trim().length > 6
+        emailState.value.includes('@') && passwordState.value.trim().length > 6
       );
     }, 500);
 
     return ()=>{
       console.log('CLEANUP');
-      clearTimeout(identifire);
+      clearTimeout(identifier);
     };
 
   }, [emailIsValid,passwordIsValid]);
@@ -106,7 +109,7 @@ const Login = (props) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    props.onLogin(emailState.value, enteredPassword );
+    props.onLogin(emailState.value, passwordState.value );
   };
 
   return (
